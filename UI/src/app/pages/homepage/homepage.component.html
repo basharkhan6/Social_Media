@@ -1,0 +1,102 @@
+<header class="bg-green-400">
+  <nav class="flex items-center justify-between flex-wrap bg-green-500 p-6">
+    <div class="flex items-center flex-shrink-0 text-white mr-6">
+      <svg class="fill-current h-8 w-8 mr-2" width="54" height="54" viewBox="0 0 54 54" xmlns="http://www.w3.org/2000/svg"><path d="M13.5 22.1c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05zM0 38.3c1.8-7.2 6.3-10.8 13.5-10.8 10.8 0 12.15 8.1 17.55 9.45 3.6.9 6.75-.45 9.45-4.05-1.8 7.2-6.3 10.8-13.5 10.8-10.8 0-12.15-8.1-17.55-9.45-3.6-.9-6.75.45-9.45 4.05z"/></svg>
+      <span class="font-semibold text-xl tracking-tight">Social Media</span>
+    </div>
+    <div class="block lg:hidden">
+      <button (click)="toggleNav()" class="flex items-center px-3 py-2 border rounded text-green-200 border-green-400 hover:text-white hover:border-white">
+        <svg class="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z"/></svg>
+      </button>
+    </div>
+<!--    <div class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">-->
+<!--      <div  class="text-sm lg:flex-grow">-->
+<!--        <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4">Home</a>-->
+<!--        <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4">Profile</a>-->
+<!--      </div>-->
+<!--      <div>-->
+<!--        <a *ngIf="showLogin" href="/login" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-green-500 hover:bg-white mt-4 lg:mt-0">Login</a>-->
+<!--        <a *ngIf="showLogin" href="/registration" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-green-500 hover:bg-white mt-4 ml-2 lg:mt-0">Registration</a>-->
+<!--        <a *ngIf="!showLogin" (click)="logout()" href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-green-500 hover:bg-white mt-4 lg:mt-0">Logout</a>-->
+<!--      </div>-->
+<!--    </div>-->
+    <div *ngIf="showNavMenu" class="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
+      <div  class="text-sm lg:flex-grow">
+        <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4">Home</a>
+        <a href="#responsive-header" class="block mt-4 lg:inline-block lg:mt-0 text-green-200 hover:text-white mr-4">Profile</a>
+      </div>
+      <div>
+        <a *ngIf="showLogin" href="/login" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-green-500 hover:bg-white mt-4 lg:mt-0">Login</a>
+        <a *ngIf="showLogin" href="/registration" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-green-500 hover:bg-white mt-4 ml-2 lg:mt-0">Registration</a>
+        <a *ngIf="!showLogin" (click)="logout()" href="#" class="inline-block text-sm px-4 py-2 leading-none border rounded text-white border-white hover:border-transparent hover:text-green-500 hover:bg-white mt-4 lg:mt-0">Logout</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<main class="bg-gray-100">
+  <div class="container mx-auto">
+    <div class="flex mb-4">
+
+      <div class="w-4/12 hidden sm:block p-4 text-center">
+        <div class="w-48 h-48 rounded-full mx-auto">
+          <img class="rounded-full h-full" src="https://tailwindcss.com/_next/static/media/sarah-dayan.a8ff3f1095a58085a82e3bb6aab12eb2.jpg" alt="" height="400px" width="400px">
+        </div>
+        <h2 class="text-2xl font-bold mt-4">Abul Basar</h2>
+        <div class="text-xl mb-3">Dhaka, Bangladesh</div>
+        <a class="border border-white text-white bg-green-400 rounded hover:border-transparent px-4 py-2" href="#">
+          <svg xmlns="http://www.w3.org/2000/svg" class="inline h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          </svg>
+          Edit Profile
+        </a>
+      </div>
+
+      <div class="w-full sm:w-7/12 p-4">
+
+        <h2 class="text-left text-3xl mb-6">
+          <svg xmlns="http://www.w3.org/2000/svg" class="inline h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+          </svg>
+          Write about your visit
+        </h2>
+        <textarea class="border-0 block m-2 w-full h-20 md:h-40"></textarea>
+        <button class="bg-green-400 rounded-lg float-right font-bold ml-4 px-8 py-3 text-2xl">Share</button>
+        <br><br>
+        <br>
+        <hr>
+        <br>
+        <h2 class="text-center text-3xl mb-6">LATEST UPDATE</h2>
+        <div *ngFor="let status of statusList" class="flex flex-wrap bg-white m-2 p-4 rounded-lg border border-gray hover:border-transparent">
+          <div class="w-2/12 text-center">
+            <div class="w-16 h-16 inline-block mt-2">
+              <img class="rounded-full h-full" src="https://tailwindcss.com/_next/static/media/sarah-dayan.a8ff3f1095a58085a82e3bb6aab12eb2.jpg" alt="" height="400px" width="400px">
+            </div>
+          </div>
+          <div class="w-10/12">
+            <div class="text-2xl font-bold mt-3 pl-2">
+              <a href="#">{{status.user.name}}</a>
+            </div>
+            <div class="text-small pl-2">{{status.createdAt | date: 'medium'}}</div>
+          </div>
+
+          <div class="w-full p-2">
+            <p>{{status.details}}</p>
+            <p class="pt-4">
+              <svg xmlns="http://www.w3.org/2000/svg" class="inline h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+              </svg>
+              at <a class="text-green-500" href="#">{{status.location.location}}</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="text-center text-xl p-2">&copy; 2021. All right reserved by <a class="text-green-500" href="fb.com/basharkhan6">Abul Basar</a></div>
+</footer>

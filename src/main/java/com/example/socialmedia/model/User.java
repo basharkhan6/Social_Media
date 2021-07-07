@@ -1,6 +1,7 @@
 package com.example.socialmedia.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
@@ -12,7 +13,7 @@ import javax.validation.constraints.Size;
 public class User {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @Column(unique = true)

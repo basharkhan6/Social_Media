@@ -1,0 +1,28 @@
+<div class="flex h-screen bg-green-500">
+  <div class="w-full max-w-xs m-auto bg-green-100 rounded p-5">
+    <header>
+      <a href="/"><div class="text-2xl text-center font-bold mb-5">
+        <span class="font-semibold text-xl tracking-tight">Social Media</span>
+      </div></a>
+    </header>
+
+    <form (submit)="login()">
+      <div>
+        <label class="block mb-2 text-green-500" for="email">Email</label>
+        <input [(ngModel)]="credentials.username" class="w-full p-2 mb-6 text-green-600 border-b-2 border-green-400 outline-none focus:bg-gray-300" type="text" name="email">
+      </div>
+      <div>
+        <label class="block mb-2 text-green-500" for="password">Password</label>
+        <input [(ngModel)]="credentials.password" class="w-full p-2 mb-6 text-green-600 border-b-2 border-green-400 outline-none focus:bg-gray-300" type="password" name="password">
+      </div>
+      <div>
+        <input class="w-full bg-green-500 hover:bg-red-700 text-white font-bold py-2 px-4 mb-6 rounded" type="submit" value="Login">
+      </div>
+    </form>
+    <footer>
+      <a class="text-green-600 hover:text-red-700 text-sm float-left" href="#">Forgot Password?</a>
+      <a class="text-green-600 hover:text-red-700 text-sm float-right" href="/registration">Create Account</a>
+    </footer>
+  </div>
+
+</div>

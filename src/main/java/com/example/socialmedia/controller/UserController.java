@@ -17,12 +17,12 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @GetMapping("/api/user")
+    @GetMapping("/api/userInfo")
     public Principal getUser(Principal user) {
         return user;
     }
 
-    @PostMapping("/api/register")
+    @PostMapping("/api/registration")
     public void registerUser(@RequestBody @Valid User user) {
         userService.createUser(user);
     }

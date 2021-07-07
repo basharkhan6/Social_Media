@@ -6,6 +6,7 @@ import com.example.socialmedia.model.User;
 import com.example.socialmedia.repository.UserRepository;
 import com.example.socialmedia.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -44,7 +45,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public User findUser(String email) {
         return userRepository.findByEmailIgnoreCase(email)
-                .orElseThrow(() -> new ResourceNotFoundException());
+                .orElseThrow(() -> new UsernameNotFoundException("No user found with username: " + email));
     }
 
     @Override
