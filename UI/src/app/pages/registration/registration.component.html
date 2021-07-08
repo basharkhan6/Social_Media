@@ -5,7 +5,7 @@
         <span class="font-semibold text-xl tracking-tight">Social Media</span>
       </div></a>
     </header>
-    <form [formGroup]="registrationFormGroup" (submit)="submitRegistrationForm()">
+    <form [formGroup]="registrationForm" (submit)="submitRegistrationForm()">
       <div>
         <label class="block mb-2 text-green-500" for="name">Full Name</label>
         <input formControlName="name" class="w-full p-2 mb-6 text-green-600 border-b-2 border-green-400 outline-none focus:bg-gray-300" type="text" name="name">

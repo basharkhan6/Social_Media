@@ -2,7 +2,12 @@ package com.example.socialmedia.controller;
 
 import com.example.socialmedia.model.Status;
 import com.example.socialmedia.service.StatusService;
+import com.example.socialmedia.service.implementation.UserServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
@@ -26,22 +31,24 @@ public class StatusController {
     }
 
     @PostMapping("/api/status")
-    public void postStatus(@RequestBody @Valid Status status, Principal principal) {
-        statusService.save(status, principal.getName());
+    public Status postStatus(Principal principal, @RequestBody @Valid Status status) {
+        return statusService.save(principal.getName(), status);
     }
 
     @PutMapping("/api/status")
-    public void updateStatus(@RequestBody @Valid Status status, Principal principal) {
-        statusService.update(status, principal.getName());
+    public Status updateStatus(Principal principal, @RequestBody @Valid Status status) {
+        return statusService.update(principal.getName(), status);
     }
 
     @DeleteMapping("/api/status/{id}")
-    public void postStatus(@PathVariable int id, Principal principal) {
-        statusService.delete(id, principal.getName());
+    public ResponseEntity postStatus(Principal principal, @PathVariable int id) {
+        statusService.delete(principal.getName(), id);
+        return new ResponseEntity(null, HttpStatus.NO_CONTENT);
     }
 
     @GetMapping("/api/status/findByUser")
-    public List<Status> getAllStatus(Principal principal) {
-        return statusService.findAllByUserEmail(principal.getName());
+    public List<Status> getAllStatus(@RequestParam int id) {
+        return statusService.findAllByUserId(id);
     }
+
 }

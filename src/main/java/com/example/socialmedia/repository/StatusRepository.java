@@ -11,6 +11,6 @@ public interface StatusRepository extends JpaRepository<Status, Integer> {
 
     boolean existsStatusById(int id);
 
-    List<Status> findAllByUserEmail(String email);
+    List<Status> findAllByUserId(int id);
 
 }

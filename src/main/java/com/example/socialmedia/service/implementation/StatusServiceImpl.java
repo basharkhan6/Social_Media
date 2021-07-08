@@ -6,6 +6,8 @@ import com.example.socialmedia.model.User;
 import com.example.socialmedia.repository.StatusRepository;
 import com.example.socialmedia.repository.UserRepository;
 import com.example.socialmedia.service.StatusService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -17,6 +19,8 @@ import java.util.List;
 @Service
 public class StatusServiceImpl implements StatusService {
 
+    private static final Logger LOGGER = LoggerFactory.getLogger(StatusServiceImpl.class);
+
     @Autowired
     private StatusRepository statusRepository;
 
@@ -24,30 +28,36 @@ public class StatusServiceImpl implements StatusService {
     private UserRepository userRepository;
 
     @Override
-    public void save(Status status, String email) {
+    public Status save(String email, Status status) {
         User user = userRepository.findByEmailIgnoreCase(email)
                 .orElseThrow(() -> new UsernameNotFoundException("No user found with username: " + email));
 
         status.setUser(user);
-        statusRepository.save(status);
+        LOGGER.trace("Saving new Status {}", status);
+        return statusRepository.save(status);
     }
 
     @Override
-    public void update(Status status, String email) {
-        Status statusFound = statusRepository.findById(status.getId())
-                .orElseThrow(() -> new ResourceNotFoundException());
+    public Status update(String email, Status status) {
+        Status statusFound = findById(status.getId());
 
-        if (!email.equals(statusFound.getUser().getEmail()))
+        if (!email.equals(statusFound.getUser().getEmail())) {
+            LOGGER.debug("Illegal Attempt to update status of {} by {}", statusFound.getUser().getEmail(), email);
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
 
-        status.setUser(statusFound.getUser());
-        statusRepository.save(status);
+        status.setUser(statusFound.getUser());      // user should not change
+        LOGGER.trace("Updating Status {}", status);
+        return statusRepository.save(status);
     }
 
     @Override
     public Status findById(int id) {
         return statusRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException());
+                .orElseThrow(() -> {
+                    LOGGER.trace("Status not found with id {}", id);
+                    return new ResourceNotFoundException();
+                });
     }
 
     @Override
@@ -56,18 +66,20 @@ public class StatusServiceImpl implements StatusService {
     }
 
     @Override
-    public List<Status> findAllByUserEmail(String email) {
-        return statusRepository.findAllByUserEmail(email);
+    public List<Status> findAllByUserId(int id) {
+        return statusRepository.findAllByUserId(id);
     }
 
     @Override
-    public void delete(int id, String email) {
-        Status statusFound = statusRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException());
+    public void delete(String email, int id) {
+        Status statusFound = findById(id);
 
-        if (!email.equals(statusFound.getUser().getEmail()))
+        if (!email.equals(statusFound.getUser().getEmail())) {
+            LOGGER.debug("Illegal Attempt to delete status of {} by {}", statusFound.getUser().getEmail(), email);
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
 
+        LOGGER.info("Deleting Status {}", id);
         statusRepository.deleteById(id);
     }
 }

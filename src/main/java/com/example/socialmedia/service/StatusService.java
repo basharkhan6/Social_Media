@@ -6,16 +6,16 @@ import java.util.List;
 
 public interface StatusService {
 
-    void save(Status status, String email);
+    Status save(String email, Status status);
 
-    void update(Status status, String email);
+    Status update(String email, Status status);
 
     Status findById(int id);
 
     List<Status> findAll();
 
-    List<Status> findAllByUserEmail(String email);
+    List<Status> findAllByUserId(int id);
 
-    void delete(int id, String email);
+    void delete(String email, int id);
 
 }

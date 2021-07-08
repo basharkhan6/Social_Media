@@ -9,7 +9,6 @@ import {ActivatedRoute, Router} from "@angular/router";
 })
 export class LoginComponent implements OnInit {
 
-  error = '';
   credentials = {username: '', password: ''};
   redirectUrl: string;
 

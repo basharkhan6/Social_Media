@@ -10,7 +10,7 @@ import {Router} from "@angular/router";
 })
 export class RegistrationComponent implements OnInit {
 
-  public registrationFormGroup: FormGroup;
+  public registrationForm: FormGroup;
   public showError: boolean;
 
   constructor(
@@ -20,7 +20,11 @@ export class RegistrationComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.registrationFormGroup = this.formBuilder.group({
+    this.setupForm();
+  }
+
+  setupForm(): void {
+    this.registrationForm = this.formBuilder.group({
       'name': '',
       'email': '',
       'password': ''
@@ -28,9 +32,9 @@ export class RegistrationComponent implements OnInit {
   }
 
   submitRegistrationForm() {
-    this.userService.registerNewUser(this.registrationFormGroup.getRawValue()).subscribe(
-      () => this.router.navigateByUrl('/login'),
-      () => this.showError = true
+    this.userService.registerNewUser(this.registrationForm).subscribe(
+      () => this.router.navigate(['login']),
+    () => this.showError = true
     );
   }
 

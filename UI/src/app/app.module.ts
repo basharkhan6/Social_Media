@@ -9,12 +9,18 @@ import {AuthInterceptorService} from "./config/auth-interceptor.service";
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { RegistrationComponent } from './pages/registration/registration.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { StatusComponent } from './pages/status/status.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'registration', component: RegistrationComponent},
   {path: 'home', component: HomepageComponent},
+  {path: 'profile', component: ProfileComponent},
+  {path: 'profile/:id', component: ProfileComponent},
+  {path: 'status', component: StatusComponent},
+  {path: 'status/:id', component: StatusComponent},
   {path: '', redirectTo: '/home', pathMatch: 'full'}
 ];
 
@@ -23,7 +29,9 @@ const routes: Routes = [
     AppComponent,
     LoginComponent,
     HomepageComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    StatusComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

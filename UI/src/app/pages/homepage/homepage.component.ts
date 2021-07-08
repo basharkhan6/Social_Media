@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from "../../service/authentication.service";
 import {StatusService} from "../../service/status.service";
 import {Status} from "../../model/status.model";
+import {User} from "../../model/user.model";
 
 @Component({
   selector: 'app-homepage',
@@ -14,6 +15,7 @@ export class HomepageComponent implements OnInit {
   public showNavMenu: boolean;
 
   public statusList: Status[];
+  public user: User;
 
   constructor(
     private authService: AuthenticationService,
@@ -21,16 +23,19 @@ export class HomepageComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.showNavMenu = false;
-    if (!this.authService.authenticated)
-      this.showLogin = true;
-    else
-      this.showLogin = true;
-
-    this.loadAllStatus();
+    this.setupNav();
+    this.getLocalUserIfFound();
+    this.getAllStatus();
   }
 
-  loadAllStatus() {
+  getLocalUserIfFound(): void {
+    let obj = this.authService.getLocalUser();
+    if (obj) {
+      this.user = obj;
+    }
+  }
+
+  getAllStatus():void {
     this.statusService.getAllStatus().subscribe(
       data => {
         this.statusList = data;
@@ -39,13 +44,17 @@ export class HomepageComponent implements OnInit {
     );
   }
 
-  logout(): boolean {
-    this.authService.logout();
-    return false;
+  setupNav(): void {
+    this.showNavMenu = false;
+    this.showLogin = !this.authService.isAuthenticated();
   }
-
 
   toggleNav(): void {
     this.showNavMenu=!this.showNavMenu;
+  }
+
+  logout(): boolean {
+    this.authService.logout();
+    return false;
   }
 }

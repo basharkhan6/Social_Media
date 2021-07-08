@@ -13,7 +13,7 @@ export class AuthInterceptorService {
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // console.log("Intercepting...")
 
-    if (this.auth.authenticated !== false && sessionStorage.getItem('cred')) {
+    if (sessionStorage.getItem('cred')) {
       // console.log("Applying Intercept header..")
 
       const xhr = req.clone({
