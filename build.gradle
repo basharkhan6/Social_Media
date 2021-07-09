@@ -28,3 +28,14 @@ dependencies {
 test {
     useJUnitPlatform()
 }
+
+task copyJar {
+    doLast {
+        copy {
+            from "build/libs/social-media-0.0.1-SNAPSHOT.jar"
+            into '.'
+        }
+    }
+}
+
+build.finalizedBy copyJar

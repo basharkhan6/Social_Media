@@ -13,6 +13,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.Optional;
@@ -32,8 +33,8 @@ class UserServiceTest {
         }
     }
 
-    String email = "bashar@gmail.com";
-    String email2 = "burhan@gmail.com";
+    String email = "bashar@test.com";
+    String email2 = "burhan@test.com";
     User user = new User(email, "Bashar", "xyz12");
     User user2 = new User(email2, "Burhan", "xyz12");
 
@@ -68,7 +69,7 @@ class UserServiceTest {
         when(userRepository.findById(user.getId())).thenReturn(Optional.of(user));
         assertEquals(user, userService.findUser(user.getId()));
 
-        assertThrows(ResourceNotFoundException.class, () -> {
+        assertThrows(UsernameNotFoundException.class, () -> {
             when(userRepository.findById(user2.getId())).thenReturn(Optional.empty());
             userService.findUser(user2.getId());
         });
@@ -79,7 +80,7 @@ class UserServiceTest {
         when(userRepository.findByEmailIgnoreCase(user.getEmail())).thenReturn(Optional.of(user));
         assertEquals(user, userService.findUser(user.getEmail()));
 
-        assertThrows(ResourceNotFoundException.class, () -> {
+        assertThrows(UsernameNotFoundException.class, () -> {
             when(userRepository.findByEmailIgnoreCase(user2.getEmail())).thenReturn(Optional.empty());
             userService.findUser(user2.getEmail());
         });

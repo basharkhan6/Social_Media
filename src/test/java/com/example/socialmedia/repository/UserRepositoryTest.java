@@ -21,7 +21,7 @@ public class UserRepositoryTest {
     @Autowired
     private UserRepository userRepository;
 
-    private String email = "bashar@gmail.com";
+    private String email = "bashar@test.com";
     User user = new User(email, "Bashar", "xyz12");
 
 
