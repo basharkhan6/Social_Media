@@ -21,8 +21,8 @@ public class StatusController {
     private StatusService statusService;
 
     @GetMapping("/api/status")
-    public List<Status> getAllStatus() {
-        return statusService.findAll();
+    public List<Status> getAllPublicStatus() {
+        return statusService.findAllPublicStatus();
     }
 
     @GetMapping("/api/status/{id}")
@@ -46,9 +46,14 @@ public class StatusController {
         return new ResponseEntity(null, HttpStatus.NO_CONTENT);
     }
 
+    @GetMapping("/api/status/findByUserId")
+    public List<Status> getAllPublicStatusByUserId(@RequestParam int userId) {
+        return statusService.findAllPublicStatusByUserId(userId);
+    }
+
     @GetMapping("/api/status/findByUser")
-    public List<Status> getAllStatus(@RequestParam int id) {
-        return statusService.findAllByUserId(id);
+    public List<Status> getAllStatusByUser(Principal principal) {
+        return statusService.findAllByUserEmail(principal.getName());
     }
 
 }

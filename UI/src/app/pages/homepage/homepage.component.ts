@@ -36,7 +36,7 @@ export class HomepageComponent implements OnInit {
   }
 
   getAllStatus():void {
-    this.statusService.getAllStatus().subscribe(
+    this.statusService.getAllPublicStatus().subscribe(
       data => {
         this.statusList = data;
       },

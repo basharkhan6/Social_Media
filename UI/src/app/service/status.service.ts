@@ -19,12 +19,16 @@ export class StatusService {
     return this.httpClient.get(this.url + '/' + id);
   }
 
-  getAllStatus(): Observable<any> {
+  getAllPublicStatus(): Observable<any> {
     return this.httpClient.get(this.url);
   }
 
-  getAllStatusByUserId(userId: number): Observable<any> {
-    return this.httpClient.get(this.url + '/findByUser?id=' + userId);
+  getAllPublicStatusByUserId(userId: number): Observable<any> {
+    return this.httpClient.get(this.url + '/findByUserId?id=' + userId);
+  }
+
+  getAllStatusByUser(): Observable<any> {
+    return this.httpClient.get(this.url + '/findByUser');
   }
 
   postStatus(statusForm: FormGroup): Observable<any> {
