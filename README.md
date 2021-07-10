@@ -64,6 +64,7 @@ though there is a **data.sql** in resource for initial data loading. Running pro
 Unlike local setup docker it pretty easy to run.
 
 1. Install Docker & Docker-Compose on machine.
+2. Change Angular API Url from environment to backend.
 2. Run ``docker-compose up``
 
 
