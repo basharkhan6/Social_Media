@@ -18,6 +18,6 @@ public interface StatusRepository extends JpaRepository<Status, Integer> {
 
     List<Status> findAllByPrivacyAndUserIdOrderByUpdatedAtDesc(PrivacyEnum privacy, int userId);
 
-    List<Status> findAllByUserEmail(String email);
+    List<Status> findAllByUserEmailOrderByUpdatedAtDesc(String email);
 
 }

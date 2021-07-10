@@ -96,7 +96,7 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     public List<Status> findAllByUserEmail(String email) {
-        return statusRepository.findAllByUserEmail(email);
+        return statusRepository.findAllByUserEmailOrderByUpdatedAtDesc(email);
     }
 
 }
