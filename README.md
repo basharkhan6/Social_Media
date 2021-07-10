@@ -74,7 +74,7 @@ This process it quite tough. But, The Dockerfile & heroku.yml of this repository
 2. Create two different application of **container** stack inside that pipeline.
 3. Deploy from the both branch angular and spring in according to application.
 
-Hurrah!! you make it!
+Hurrah!! you make it run!
 
 
 ## License
