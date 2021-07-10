@@ -3,6 +3,7 @@ package com.example.socialmedia.service.implementation;
 import com.example.socialmedia.exception.ResourceNotFoundException;
 import com.example.socialmedia.model.Status;
 import com.example.socialmedia.model.User;
+import com.example.socialmedia.model.enumeration.PrivacyEnum;
 import com.example.socialmedia.repository.StatusRepository;
 import com.example.socialmedia.repository.UserRepository;
 import com.example.socialmedia.service.StatusService;
@@ -66,11 +67,6 @@ public class StatusServiceImpl implements StatusService {
     }
 
     @Override
-    public List<Status> findAllByUserId(int id) {
-        return statusRepository.findAllByUserId(id);
-    }
-
-    @Override
     public void delete(String email, int id) {
         Status statusFound = findById(id);
 
@@ -82,4 +78,25 @@ public class StatusServiceImpl implements StatusService {
         LOGGER.info("Deleting Status {}", id);
         statusRepository.deleteById(id);
     }
+
+    @Override
+    public List<Status> findAllByUserId(int userId) {
+        return statusRepository.findAllByUserIdOrderByUpdatedAtDesc(userId);
+    }
+
+    @Override
+    public List<Status> findAllPublicStatus() {
+        return statusRepository.findAllByPrivacyOrderByUpdatedAtDesc(PrivacyEnum.PUBLIC);
+    }
+
+    @Override
+    public List<Status> findAllPublicStatusByUserId(int userId) {
+        return statusRepository.findAllByPrivacyAndUserIdOrderByUpdatedAtDesc(PrivacyEnum.PUBLIC, userId);
+    }
+
+    @Override
+    public List<Status> findAllByUserEmail(String email) {
+        return statusRepository.findAllByUserEmailOrderByUpdatedAtDesc(email);
+    }
+
 }

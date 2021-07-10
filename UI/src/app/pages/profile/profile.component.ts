@@ -31,7 +31,7 @@ export class ProfileComponent implements OnInit {
   ngOnInit(): void {
     this.checkAuthentication();
     this.setupNav();
-    this.loadProfile();
+    this.loadProfileByCheckingOwner();
     this.resetPasswordForm();
   }
 
@@ -44,16 +44,16 @@ export class ProfileComponent implements OnInit {
     private router: Router
   ) { }
 
-  loadProfile(): void {
+  loadProfileByCheckingOwner(): void {
     this.getUserId();
     this.getLocalUserIfFound();
 
     if (this.userId && this.userId != this.user.id) {
       this.profileOwner = false;
-      this.getAllStatusByUserId(this.userId);
+      this.getAllStatusByUser(this.userId);
     } else {
       this.profileOwner = true;
-      this.getAllStatusByUserId(this.user.id);
+      this.getAllStatusByUser();
     }
   }
 
@@ -83,13 +83,22 @@ export class ProfileComponent implements OnInit {
     );
   }
 
-  getAllStatusByUserId(userId: number): void {
-    this.statusService.getAllStatusByUserId(userId).subscribe(
-      data => {
-        this.statusList = data;
-      },
-      error => console.log(error)
-    );
+  getAllStatusByUser(userId?: number): void {
+    if (userId) {
+      this.statusService.getAllPublicStatusByUserId(userId).subscribe(
+        data => {
+          this.statusList = data;
+        },
+        error => console.log(error)
+      );
+    } else {
+      this.statusService.getAllStatusByUser().subscribe(
+        data => {
+          this.statusList = data;
+        },
+        error => console.log(error)
+      );
+    }
   }
 
 

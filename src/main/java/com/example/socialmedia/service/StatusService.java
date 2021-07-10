@@ -14,8 +14,14 @@ public interface StatusService {
 
     List<Status> findAll();
 
-    List<Status> findAllByUserId(int id);
-
     void delete(String email, int id);
+
+    List<Status> findAllByUserId(int userId);
+
+    List<Status> findAllPublicStatus();
+
+    List<Status> findAllPublicStatusByUserId(int userId);
+
+    List<Status> findAllByUserEmail(String email);
 
 }
