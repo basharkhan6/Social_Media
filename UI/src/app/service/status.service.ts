@@ -34,4 +34,9 @@ export class StatusService {
   postStatus(statusForm: FormGroup): Observable<any> {
     return this.httpClient.post(this.url, statusForm.getRawValue());
   }
+
+  deleteStatus(id: number): Observable<any> {
+    return this.httpClient.delete(this.url + '/' + id);
+  }
+
 }

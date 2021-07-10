@@ -84,7 +84,16 @@ export class StatusComponent implements OnInit {
         ()=> this.showError = true
       );
     } else {
-      alert('Please fillup all the required fields');
+      alert('Please fill all the required fields');
+    }
+  }
+
+  deleteStatus(): void {
+    if (confirm('Are you sure? \n You are going to delete this status.')) {
+      this.statusService.deleteStatus(this.statusId).subscribe(
+        () => this.router.navigate(['/profile']),
+        error => console.log(error)
+      );
     }
   }
 
