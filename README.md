@@ -7,7 +7,7 @@
 # Social Media
 A small social media platform with REST and Basic Security where users can post and update status with location.
 
-[Visit here](https://github.com/basharkhan6/Social_Media) for quick demo.
+[Visit here](https://social-media-angular.herokuapp.com/) for quick demo.
 
 
 ### Functional Requirements
