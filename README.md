@@ -78,13 +78,12 @@ This process it quite tough. But, The Dockerfile & heroku.yml of this repository
 Hurrah!! you make it run!
 
 
-## License
+## License [![GitHub license](https://img.shields.io/github/license/Naereen/StrapDown.js.svg)](https://github.com/Naereen/StrapDown.js/blob/master/LICENSE)
 Distributed under the [MIT](https://opensource.org/licenses/MIT) License. See **LICENSE** for more information.
 
 
 
-## Contact
-[![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Naereen/ama)
+## Contact [![Ask Me Anything !](https://img.shields.io/badge/Ask%20me-anything-1abc9c.svg)](https://GitHub.com/Naereen/ama)
 
 Abul Basar - [@basharkhan6](https://facebook.com/basharkhan6) - basharkhan6@gmail.com
 
@@ -94,3 +93,7 @@ Project Link: [https://social-media-angular.herokuapp.com](https://social-media-
 
 [![Linkedin](https://img.shields.io/badge/linkedin%20-%230077B5.svg?&style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/abulbasar7/)
 [![Stackoverflow](https://img.shields.io/badge/-Stack%20overflow-FE7A16?style=for-the-badge&logo=stack-overflow&logoColor=white)](https://stackoverflow.com/users/story/9582577)
+
+
+[![ForTheBadge built-with-swag](http://ForTheBadge.com/images/badges/built-with-swag.svg)](https://GitHub.com/Naereen/)
+[![ForTheBadge uses-git](http://ForTheBadge.com/images/badges/uses-git.svg)](https://GitHub.com/)
