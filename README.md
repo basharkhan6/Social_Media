@@ -58,7 +58,7 @@ though there is a **data.sql** in resource for initial data loading. Running pro
 1. Install Java and Gradle.
 2. Run command ``./gradlew bootRun``.
 3. Install Node and Angular.
-4. Run command ``ng -serve``.
+4. Run command ``ng serve``.
 
 #### Running on Docker
 Unlike local setup docker it pretty easy to run.
